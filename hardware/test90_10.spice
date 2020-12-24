@@ -5,9 +5,11 @@
 *
 
 * --- Circuit Topology ---
-* 2 value PWM (0.2 and 0.8 duty cycle)
+* 2 value PWM to simulate note change (90, 10% duty cycle)
+
 .param f_pwm = 32e3
-B1 in 0 V={(f_pwm*time - floor(f_pwm*time)) > v(1) ? 1 : 0}
+.param v_pwm = 10.5
+B1 in 0 V={(f_pwm*time - floor(f_pwm*time)) > v(1) ? v_pwm : 0}
 * Modulator, 2 value pulse input 0.2
 V1 1 0 pulse(0.1 0.9 10m 0 0 50m 20 0)
 
