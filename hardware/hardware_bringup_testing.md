@@ -14,7 +14,10 @@
 4. ICSP Simple serial print/echo and use USB-TTL attached to H1 T10/12
 5. Re-program fuses to 8MHz internal oscillator - retest
 6. Re-program fuses to 16MHz external oscillator - retest
-7. MIDI Note-On/Off = LED blink.
+7. MIDI Note-On/Off = LED blink. 
+  1. With PC - `ttymidi -v -s /dev/ttyUSB0`, `aplaymidi -p ttymidi:1 /home/mlashley/Downloads/bachpiece.mid`
+  1. With real device (set baud to 31250
+
 
 ## Power
 1. Apply 12v power and check 5v
