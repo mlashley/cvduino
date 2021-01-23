@@ -1,16 +1,22 @@
 // Uncomment to test MIDI, else test serial-print/echo.
-#define TEST_MIDI 1
+// #define TEST_MIDI 1
 
 #ifdef TEST_MIDI
   #include <MIDI.h>
   MIDI_CREATE_DEFAULT_INSTANCE();
 #endif
 
+#define CV1 PIN_PB0
+#define CV2 PIN_PB1
+#define CV3 PIN_PB2
+#define CV4 PIN_PB3
+
 int ledPin = PIN_PD7; 
 boolean newData = false;
 const byte numChars = 32;
 char c[numChars];
 unsigned long next = 0;
+byte pwmstate = LOW;
 
 void recvWithnewline() {
     static byte i = 0;
@@ -54,6 +60,10 @@ void handleNoteOff(byte channel, byte pitch, byte velocity)
 
 void setup() {
   pinMode(ledPin, OUTPUT);
+  pinMode(CV1, OUTPUT);
+  pinMode(CV2, OUTPUT);
+  pinMode(CV3, OUTPUT);
+  pinMode(CV4, OUTPUT);
 
 #ifdef TEST_MIDI
   MIDI.setHandleNoteOn(handleNoteOn);  // Put only the name of the function
@@ -77,8 +87,18 @@ void loop() {
     digitalWrite(ledPin,HIGH);
     delay(100);
     digitalWrite(ledPin,LOW);
-  }
 
+    /* also cycle PWM pins on/off every second */
+    if(pwmstate == LOW) {
+      pwmstate = HIGH;
+    } else {
+      pwmstate = LOW;
+    }
+    digitalWrite(CV1,pwmstate);
+    digitalWrite(CV2,pwmstate);
+    digitalWrite(CV3,pwmstate);
+    digitalWrite(CV4,pwmstate);
+  }
 #else
   MIDI.read();
 #endif
