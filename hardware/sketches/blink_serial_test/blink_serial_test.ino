@@ -73,7 +73,7 @@ void setup() {
   MIDI.setHandleNoteOff(handleNoteOff);
   MIDI.begin(MIDI_CHANNEL_OMNI);
 #endif
-  TCCR1B = TCCR1B & B11111000 | B00000001; // set timer 1 divisor to 1 for PWM frequency of 31372.55 Hz
+  TCCR1B = TCCR1B & B11111000 | B00000001; // set timer 1 divisor to 1 for PWM frequency of 31372.55 Hz (16MHz / 510 with 8 bit mode)
   TCCR2B = TCCR2B & B11111000 | B00000001;
   Serial.begin(115200);
   Serial.println("Starting self-test");
