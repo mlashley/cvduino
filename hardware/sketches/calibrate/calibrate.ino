@@ -44,6 +44,8 @@ void setup() {
   Serial.println("Scale on PWM4");
   // Connect CV device to PWM1 - tune to eg. 55 or 110 Hz, then connect to CV3 and adjust voltage to 
   // have connected VCO output X*2*2*2*2*2 Hz. CV2 should then give X*2 Hz at the oscillator output.
+  // 55*2^5 = 1760, 110*2^5 = 3520
+
 }
 
 void loop() {
