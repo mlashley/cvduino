@@ -40,6 +40,12 @@ void handleNoteOff(byte channel, byte note, byte velocity)
 void setup() {
   
   pinMode(ledPin, OUTPUT);
+  pinMode(CV1, OUTPUT);
+  pinMode(CV2, OUTPUT);
+  pinMode(CV3, OUTPUT);
+  pinMode(CV4, OUTPUT);
+  TCCR1B = TCCR1B & B11111000 | B00000001; // set timer 1 divisor to 1 for PWM frequency of 31372.55 Hz (16MHz / 510 with 8 bit mode)
+  TCCR2B = TCCR2B & B11111000 | B00000001;
   MIDI.setHandleNoteOn(handleNoteOn);  // Put only the name of the function
   MIDI.setHandleNoteOff(handleNoteOff);
   MIDI.begin(MIDI_CHANNEL_OMNI);
