@@ -179,4 +179,11 @@ With 12v applied
 
 ## 10v6 switching/PWM
 1. Works
-2.
+2. Also works
+
+## AVR
+Additional calibration and test sketches in `sketches/*`
+
+All worked except MIDI thru the DIN connector - turns out the EasyEDA layout for the conneector is swapped (or assumed to be mounted opposite-side to 'component side')
+The 2 pin jumper to breakout to breadboard was an excellent choice here... wired correctly all is good.
+Check https://learn.sparkfun.com/tutorials/midi-tutorial/hardware--electronic-implementation for useful pictures.
